@@ -1,0 +1,52 @@
+
+        /* === NAVBAR PERSONALIZADA === */
+        .navbar.main-navbar {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .navbar.main-navbar .nav-link {
+            position: relative;
+            color: #2d572c !important;
+            /* verde escuro inspirado em Minecraft */
+            font-weight: 600;
+            font-size: 16px;
+            margin: 0 12px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar.main-navbar .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background-color: #2ecc71;
+            /* verde limão */
+            transition: width 0.3s ease;
+        }
+
+        .navbar.main-navbar .nav-link:hover {
+            color: #2ecc71 !important;
+        }
+
+        .navbar.main-navbar .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .navbar.main-navbar .btn {
+            background-color: #27ae60;
+            border: none;
+            padding: 6px 16px;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .navbar.main-navbar .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 12px rgba(39, 174, 96, 0.5);
+            background-color: #2ecc71;
+        }
+   

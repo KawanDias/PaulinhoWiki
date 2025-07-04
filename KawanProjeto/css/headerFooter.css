@@ -1,0 +1,412 @@
+/* Importação de fonte do Google Fonts (Open Sans para corpo, Roboto para títulos) */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+    /* Cores baseadas nas imagens fornecidas para a navbar e footer */
+    --navbar-bg-color: #FFFFFF; /* Fundo da Navbar (branco) */
+    --navbar-text-color: #FFFFFF; /* Texto do botão Login (branco) */
+    --navbar-logo-color: #4CAF50; /* Cor do logo da Navbar (verde) */
+    --navbar-link-color: #333333; /* Cor do link da Navbar (preto/cinza escuro) */
+    --navbar-link-hover-underline: #4CAF50; /* Cor da linha de hover e do texto no hover (verde) */
+
+    --btn-login-bg: #4CAF50; /* Fundo do botão Login (verde) */
+    --btn-login-hover: #45a049; /* Fundo do botão Login no hover */
+
+    /* Cores e configurações para a Hero Section (fundo de imagem) */
+    --hero-text-color: #FFFFFF; /* Texto da Hero Section (branco) */
+    --hero-overlay-color: rgba(0, 0, 0, 0.4); /* Camada escura sobre a imagem para legibilidade (ajuste a opacidade) */
+
+    /* Cores gerais do corpo da página e cards */
+    --primary-text-color: #333333; /* Cor principal do texto (cinza escuro) */
+    --secondary-text-color: #666666; /* Cor secundária do texto (cinza médio) */
+    --background-light: #F5F5F5; /* Fundo geral do corpo da página (cinza claro) */
+    --white: #FFFFFF; /* Cor branca pura */
+    --border-color: #E0E0E0; /* Cor da borda dos cards e linha da navbar/footer */
+    --shadow-light: rgba(0, 0, 0, 0.1); /* Sombra leve */
+    --hover-effect-color: #007bff; /* Azul para links e ícones dos cards (pode ser ajustado se a sua marca for mais verde) */
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: var(--primary-text-color);
+    background-color: var(--background-light);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Cabeçalho (Header) --- */
+header {
+    background-color: var(--navbar-bg-color); /* Fundo branco para a navbar */
+    padding: 1rem 0;
+    box-shadow: 0 1px 3px var(--shadow-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color); /* Uma linha sutil no final da navbar */
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between; /* Espaço entre logo, nav e botão */
+    align-items: center; /* Alinha tudo verticalmente ao centro */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo a {
+    color: var(--navbar-logo-color); /* Cor verde para o logo */
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-style: italic; /* O logo na imagem parece ser itálico */
+}
+
+header nav {
+    /* Empurra a navegação para a direita, dando espaço para o logo */
+    margin-left: auto;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    margin: 0 15px; /* Espaçamento entre os itens da navbar */
+}
+
+header nav ul li a {
+    color: var(--navbar-link-color); /* Cor preta/cinza escuro para os links */
+    text-decoration: none;
+    font-weight: 600;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+
+    position: relative; /* Necessário para posicionar o pseudo-elemento ::after */
+    overflow: hidden; /* Garante que a linha não vaze antes de aparecer */
+    display: inline-block; /* Para garantir que o padding e overflow funcionem */
+}
+
+/* Linha verde de hover */
+header nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; /* Posição da linha */
+    left: 50%; /* Começa no centro */
+    width: 0; /* Largura inicial zero */
+    height: 3px; /* Espessura da linha */
+    background-color: var(--navbar-link-hover-underline); /* Cor da linha */
+    transition: width 0.3s ease, left 0.3s ease; /* Transição para a animação */
+    transform: translateX(-50%); /* Centraliza o elemento */
+}
+
+header nav ul li a:hover::after,
+header nav ul li a.active::after {
+    width: 100%; /* Largura total no hover/ativo */
+    left: 0; /* Volta para o início */
+    transform: translateX(0); /* Remove a translação para centralizar */
+}
+
+header nav ul li a:hover,
+header nav ul li a.active {
+    color: var(--navbar-link-hover-underline); /* Cor do texto do link no hover/ativo */
+}
+
+.btn-login {
+    background-color: var(--btn-login-bg); /* Verde do botão Login */
+    color: var(--navbar-text-color); /* Texto branco do botão */
+    padding: 8px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    margin-left: 20px; /* Adiciona um pouco de espaço entre a nav e o botão */
+}
+
+.btn-login:hover {
+    background-color: var(--btn-login-hover);
+}
+
+/* --- Rodapé (Footer) --- */
+footer {
+    background-color: var(--navbar-bg-color); /* Usando a cor branca para o rodapé também */
+    color: var(--primary-text-color); /* Texto escuro para o rodapé, como na imagem da home */
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color); /* Linha sutil acima do rodapé */
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-links a {
+    color: var(--primary-text-color); /* Links do rodapé em cor escura */
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--hover-effect-color);
+}
+
+/* --- Hero Section (Incluído aqui para fins de demonstração, mas pode ser separado se preferir) --- */
+.hero-section {
+    background: url('Desfoque.jpg') no-repeat center center/cover; /* Imagem de fundo desfocada */
+    color: var(--hero-text-color); /* Cor do texto branco */
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Camada escura sobre a imagem para melhor legibilidade do texto */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--hero-overlay-color); /* Usando a variável de overlay */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-bar input[type="text"] {
+    width: 70%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    background-color: var(--white);
+    color: var(--primary-text-color);
+}
+
+.search-bar input[type="text"]::placeholder {
+    color: var(--secondary-text-color);
+}
+
+.search-bar button {
+    padding: 12px 25px;
+    background-color: var(--btn-login-bg);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: var(--btn-login-hover);
+}
+
+/* --- Seção Principal de Tutoriais (Tutoriais Main Content) --- */
+.tutoriais-main-content {
+    padding: 60px 20px;
+    background-color: var(--white);
+    min-height: 60vh;
+}
+
+.tutoriais-main-content h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.2rem;
+    color: var(--primary-text-color);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.tutorial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    justify-content: center;
+}
+
+.tutorial-card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--shadow-light);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tutorial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+    font-size: 3rem;
+    color: var(--hover-effect-color);
+    margin-bottom: 15px;
+}
+
+.tutorial-card h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.tutorial-card h3 a {
+    color: var(--primary-text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.tutorial-card h3 a:hover {
+    color: var(--hover-effect-color);
+}
+
+.tutorial-card p {
+    font-size: 0.95rem;
+    color: var(--secondary-text-color);
+    margin-bottom: 20px;
+}
+
+.card-meta {
+    display: flex;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: var(--secondary-text-color);
+    margin-top: auto;
+    margin-bottom: 15px;
+    gap: 15px;
+}
+
+.card-meta i {
+    margin-right: 5px;
+    color: var(--hover-effect-color);
+}
+
+.btn-card {
+    display: inline-block;
+    background-color: var(--hover-effect-color);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-card:hover {
+    background-color: #0056b3;
+}
+
+
+/* --- Responsividade (Media Queries) --- */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    header nav {
+        margin-left: 0; /* Remove margem para centralizar */
+        margin-bottom: 15px;
+    }
+
+    header nav ul {
+        flex-direction: column;
+    }
+
+    header nav ul li {
+        margin: 0 0 10px 0;
+    }
+
+    .btn-login {
+        width: auto;
+        margin-left: 0;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .search-bar {
+        flex-direction: column;
+    }
+
+    .search-bar input[type="text"],
+    .search-bar button {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .tutorial-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+}
